@@ -1,0 +1,35 @@
+apiVersion: schemas.schemahero.io/v1alpha4
+kind: Table
+metadata:
+  name: purchases
+spec:
+  database: productiondb
+  name: purchases
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      foreignKeys:
+        - columns:
+            - user_id
+          references:
+            table: user_login
+            columns:
+              - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: user_id
+        type: text
+        constraints:
+          notNull: true
+      - name: article
+        type: text
+        constraints:
+          notNull: true
+      
+      
+      
+   

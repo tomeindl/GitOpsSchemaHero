@@ -1,0 +1,25 @@
+apiVersion: schemas.schemahero.io/v1alpha4
+kind: Table
+metadata:
+  name: userlogin
+spec:
+  database: productiondb
+  name: user_login
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: user_id
+        type: text
+        constraints:
+          notNull: true
+      - name: last_login
+        type: timestamp without time zone
+        constraints:
+          notNull: true
+   

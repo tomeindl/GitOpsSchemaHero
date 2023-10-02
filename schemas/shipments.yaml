@@ -1,0 +1,43 @@
+apiVersion: schemas.schemahero.io/v1alpha4
+kind: Table
+metadata:
+  name: shipment
+spec:
+  database: productiondb
+  name: shipments
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      foreignKeys:
+        - columns:
+            - user_id
+          references:
+            table: user_login
+            columns:
+              - id
+        - columns:
+            - purchase_id
+          references:
+            table: purchases
+            columns:
+              - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: user_id
+        type: text
+        constraints:
+          notNull: true
+      - name: purchase_id
+        type: text
+        constraints:
+          notNull: true
+      - name: is_delevered
+        type: boolean
+        default: "false"
+        constraints:
+          notNull: true
+   
